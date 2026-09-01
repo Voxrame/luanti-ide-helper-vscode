@@ -1,0 +1,3 @@
+[submodule "library"]
+	path = library
+	url = git@github.com:Voxrame/luanti-ide-helper.git

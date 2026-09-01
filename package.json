@@ -1,0 +1,50 @@
+{
+  "publisher": "Voxrame",
+  "name": "luanti-ide-helper",
+  "displayName": "Luanti API",
+  "description": "Precise IDE autocompletion and documentation for Luanti with accurate type signatures and API definitions.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Voxrame/luanti-ide-helper-vscode"
+  },
+  "homepage": "https://github.com/Voxrame/luanti-ide-helper-vscode#readme",
+  "bugs": {
+    "url": "https://github.com/Voxrame/luanti-ide-helper-vscode/issues"
+  },
+  "keywords": [
+    "lua",
+    "luanti",
+    "minetest",
+    "emmylua",
+    "autocomplete",
+    "documentation",
+    "intellisense"
+  ],
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.104.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:lua"
+  ],
+  "main": "./extension.js",
+  "contributes": {},
+  "extensionDependencies": [
+    "tangzx.emmylua"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.104.0",
+    "eslint": "^10.9.1",
+    "globals": "^17.11.0"
+  }
+}

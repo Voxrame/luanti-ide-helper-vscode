@@ -1,0 +1,14 @@
+.git/**
+.github/**
+.gitmodules
+.gitignore
+.vscode/**
+**/jsconfig.json
+eslint.config.mjs
+node_modules/**
+library/.git/**
+library/.vscode/**
+library/.gitignore
+library/.github/**
+library/license.md
+library/readme.md
