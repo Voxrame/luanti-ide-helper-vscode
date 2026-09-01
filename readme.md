@@ -7,7 +7,7 @@
 
 Precise IDE autocompletion and documentation for Luanti with accurate type signatures and API definitions.
 
-![Demo](./library/luanti-ide-helper.gif)
+![Demo](https://raw.githubusercontent.com/Voxrame/luanti-ide-helper/master/luanti-ide-helper.gif)
 
 ## Features
 
