@@ -64,4 +64,4 @@ jobs:
           name: vsix-package
 
       - name: Publish to Open VSX Registry
-        run: npx ovsx publish -p ${{ secrets.OPEN_VSX_ACCESS_TOKEN }} --packagePath *.vsix --no-git-tag-version
+        run: npx ovsx publish -p ${{ secrets.OPEN_VSX_ACCESS_TOKEN }} --packagePath *.vsix
