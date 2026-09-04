@@ -1,0 +1,67 @@
+name: Build Package and Publish
+
+on:
+  push:
+    tags:
+      - '[0-9]*.[0-9]*.[0-9]*'
+
+
+jobs:
+
+  build:
+    name: Build Package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: |
+          npm ci
+          # npm run lint # called via `"scripts"."vscode:prepublish"` in `package.json`
+
+      - name: Build VSIX Package
+        run: npx @vscode/vsce package --no-git-tag-version
+
+      - name: Upload VSIX Artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: vsix-package
+          path: '*.vsix'
+          retention-days: 1
+
+
+  publish-vs-marketplace:
+    name: Microsoft Marketplace
+    needs: build
+    runs-on: ubuntu-latest
+    environment: ms-marketplace
+    steps:
+      - name: Download VSIX Artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: vsix-package
+
+      - name: Publish to VS Code Marketplace
+        run: npx @vscode/vsce publish -p ${{ secrets.VSCODE_MARKET_ACCESS_TOKEN }} --packagePath *.vsix --no-git-tag-version
+
+
+  publish-open-vsx:
+    name: Open VSX Registry
+    needs: build
+    runs-on: ubuntu-latest
+    environment: open-vsx-registry
+    steps:
+      - name: Download VSIX Artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: vsix-package
+
+      - name: Publish to Open VSX Registry
+        run: npx ovsx publish -p ${{ secrets.OPEN_VSX_ACCESS_TOKEN }} --packagePath *.vsix --no-git-tag-version
