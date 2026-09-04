@@ -1,0 +1,38 @@
+name: Update Library Submodule
+
+on:
+  repository_dispatch:
+    types: [update-submodule] # event name triggered from another repository wf
+
+
+jobs:
+
+  update-submodule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v6
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }} # Built-in token is enough
+
+      - name: Configure Git
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+
+      - name: Pull Latest Submodule Changes
+        run: |
+          git submodule update --remote
+
+      - name: Commit and Push Changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            SUBMODULE_COMMITS=$(git submodule summary)
+            git add .
+            git commit -m 'Update `library` submodule.' -m "$SUBMODULE_COMMITS"
+            git push origin master
+          else
+            echo "No changes detected in submodule. Skipping commit."
+          fi
