@@ -36,6 +36,12 @@ jobs:
           path: '*.vsix'
           retention-days: 1
 
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v3
+        with:
+          files: '*.vsix'
+          generate_release_notes: true
+
 
   publish-vs-marketplace:
     name: Microsoft Marketplace
