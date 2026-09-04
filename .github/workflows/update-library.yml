@@ -1,6 +1,7 @@
 name: Update Library Submodule
 
 on:
+  workflow_dispatch: # manual run - needed for run and **wait** result from another repository wf
   repository_dispatch:
     types: [update-submodule] # event name triggered from another repository wf
 
