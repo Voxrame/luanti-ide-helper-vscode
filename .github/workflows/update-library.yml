@@ -5,6 +5,9 @@ on:
   repository_dispatch:
     types: [update-submodule] # event name triggered from another repository wf
 
+permissions:
+  contents: write # for built-in token
+
 
 jobs:
 
