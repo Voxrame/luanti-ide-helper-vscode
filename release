@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+npm version patch -m "bump version. Release %s"
+git push
+git push --tags

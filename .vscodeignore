@@ -12,3 +12,4 @@ library/.gitignore
 library/.github/**
 library/license.md
 library/readme.md
+release
