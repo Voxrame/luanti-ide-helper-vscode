@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.0.7](https://github.com/Voxrame/luanti-ide-helper-vscode/releases/tag/1.0.7)
+ - Fix: annotations (library) were missing from packages since 1.0.2
+
 ## [1.0.6](https://github.com/Voxrame/luanti-ide-helper-vscode/releases/tag/1.0.6)
  - Update `library` submodule.
    * library 92cf1c4...ea41411 (1):
