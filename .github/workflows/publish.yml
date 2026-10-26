@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v6
+        with:
+          submodules: recursive
 
       - name: Setup Node.js
         uses: actions/setup-node@v7
@@ -28,6 +30,15 @@ jobs:
 
       - name: Build VSIX Package
         run: npx @vscode/vsce package --no-git-tag-version
+
+      - name: Check VSIX contains annotations
+        run: |
+          count=$(unzip -l *.vsix | grep -c 'extension/library/.*\.lua$' || true)
+          echo "Annotation files in VSIX: $count"
+          if [ "$count" -lt 10 ]; then
+            echo "::error::VSIX has no \`library\` annotations (is the submodule checked out?)"
+            exit 1
+          fi
 
       - name: Upload VSIX Artifact
         uses: actions/upload-artifact@v7
