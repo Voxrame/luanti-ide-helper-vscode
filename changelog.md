@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.0.8](https://github.com/Voxrame/luanti-ide-helper-vscode/releases/tag/1.0.8)
+ - Update `library` submodule.
+   * library c9f3085...d19edc2 (1):
+     > Annotations: `Settings(filename)` constructor.
+ - Update `library` submodule.
+   * library d19edc2...6168e26 (1):
+     > Annotations: `core.get_player_information()` & `core.get_player_window_information()` return types (per engine source).
+
 ## [1.0.7](https://github.com/Voxrame/luanti-ide-helper-vscode/releases/tag/1.0.7)
  - Fix: annotations (library) were missing from packages since 1.0.2
 
