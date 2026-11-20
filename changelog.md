@@ -1,5 +1,15 @@
 # Change Log
 
+## [1.0.9](https://github.com/Voxrame/luanti-ide-helper-vscode/releases/tag/1.0.9)
+ - Update `library` submodule.
+   * library 6168e26...8c5af6f (2):
+     > Annotations: entities — optional callbacks, typed `self` via `LuaEntity<T>`, `RegisteredEntityDefinition`.
+     > Annotations: types for `core.registered_*` & other global tables; remove nonexistent `core.registered_schematics`.
+ - `release`: pull (with rebase, autostash & submodules) before bumping the version.
+ - Entities: `self` in `EntityDefinition` callbacks is now typed — inherit your entity class from `LuaEntity<YourClass>`
+   (`---@class mymod.Entity: LuaEntity<mymod.Entity>`) to get its fields in `self`; all callbacks are optional now.
+ - LuaLS: fields inherited through generic classes may not be visible (EmmyLua is recommended).
+
 ## [1.0.8](https://github.com/Voxrame/luanti-ide-helper-vscode/releases/tag/1.0.8)
  - Update `library` submodule.
    * library c9f3085...d19edc2 (1):
