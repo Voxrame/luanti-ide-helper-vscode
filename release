@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# `c.askContinue` & colors from the releaser (`gh-release`)
+. "$(dirname "$(realpath "$(command -v gh-release)")")/colors" || exit 1
+
+git pull --rebase --autostash --recurse-submodules || exit 1
+
 npm version patch --no-git-tag-version
 git add package.json package-lock.json
 
